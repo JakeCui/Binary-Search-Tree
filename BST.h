@@ -41,7 +41,7 @@ private:
 	Node *remove(Node *node, Key key);                     //delete the node of the key
 	Node *search(Node *node, Key key);                     //search the mode of the key
 	Node *minimum(Node *node);                             //find minimum node of the tree
-	Node *maximum(Node *node);                             //find maximun node of the tree
+	Node *maximum(Node *node);                             //find maximum node of the tree
 	Node *Successor(Node *node, Key key);                  //find successor of the node
 	Node *Predecessor(Node *node, Key key);                //find predecessor of the node
 	void inOrder(Node *node);                              //list in order
@@ -49,7 +49,7 @@ private:
 
 	Node *removeMin(Node *node);                           //remove the min under the node (using in the delete function)
 	Node *removeMax(Node *node);                           //remove the max under the node (not use, just for the symmetry of the code)
-
+	Node *getParent(Node *node, Node *child);
 
 public:
 	Node *root;

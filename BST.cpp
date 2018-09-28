@@ -229,7 +229,14 @@ Node *BST::Successor(Node *node, Key key) {
 	else {
 		if (search(node, key)->right == NULL)
 		{
-			return NULL;
+			Node *x = search(node, key);
+			Node *y = getParent(root, x);
+			while ((y != NULL) && (x == y->right))
+			{
+				x = y;
+				y = getParent(root, y);
+			}
+			return y;
 		}
 		else
 		{
@@ -262,7 +269,14 @@ Node *BST::Predecessor(Node *node, Key key)
 	else {
 		if (search(node, key)->left == NULL)
 		{
-			return NULL;
+			Node *x = search(node, key);
+			Node *y = getParent(root, x);
+			while ((y != NULL) && (x == y->left))
+			{
+				x = y;
+				y = getParent(root, y);
+			}
+			return y;
 		}
 		else
 		{
@@ -316,3 +330,21 @@ Node*BST::removeMax(Node* node) {
 	node->right = removeMax(node->right);
 	return node;
 }
+//get the parent of a node
+Node * BST::getParent(Node * node, Node * child)
+{
+	static Node *parent = NULL;
+	if (node->left == child || node->right == child)
+	{
+
+		parent = node;
+	}
+	else
+	{
+		getParent(node->left, child);
+		getParent(node->right, child);
+	}
+
+	return parent;
+}
+
